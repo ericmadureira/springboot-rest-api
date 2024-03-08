@@ -7,6 +7,7 @@
 - IntelliJ
 
 ## Commands
+- `./mvnw spring-boot:run` - Runs project though Maven's SpringBoot plugin.
 - `./mvnw clean` - Cleans `target` folder.
 - `./mvnw test` - Compiles and run tests.
 - `./mvnw package` - Compilation, testing and creation of .jar/.war files.

@@ -6,6 +6,11 @@
 - Maven
 - IntelliJ
 
+## Commands
+- `./mvnw clean` - Cleans `target` folder.
+- `./mvnw test` - Compiles and run tests.
+- `./mvnw package` - Compilation, testing and creation of .jar/.war files.
+
 ## Troubleshooting
 ### Windows
 - `Error: JAVA_HOME not found in your environment.`

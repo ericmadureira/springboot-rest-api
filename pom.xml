@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.madu</groupId>
-	<artifactId>SpringRestApi</artifactId>
+	<artifactId>springrestapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringRestApi</name>
 	<description>Demo project for Spring Boot</description>

@@ -1,4 +1,4 @@
-package com.madu.SpringRestApi;
+package com.madu.springrestapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

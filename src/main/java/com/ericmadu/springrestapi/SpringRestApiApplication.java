@@ -1,4 +1,4 @@
-package com.madu.springrestapi;
+package com.ericmadu.springrestapi;
 
 import lombok.extern.java.Log;
 import org.springframework.boot.CommandLineRunner;

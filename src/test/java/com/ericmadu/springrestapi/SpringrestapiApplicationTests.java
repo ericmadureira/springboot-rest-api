@@ -1,10 +1,10 @@
-package com.madu.springrestapi;
+package com.ericmadu.springrestapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringRestApiApplicationTests {
+class SpringrestapiApplicationTests {
 
 	@Test
 	void contextLoads() {

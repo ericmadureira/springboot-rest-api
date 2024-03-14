@@ -19,4 +19,6 @@
 - `'mvnw' is not recognized as an internal or external command`
   - You can either 1. add Maven installation path to the `PATH` env variable, or 2. run the command as `./mvnw`.
 - `Cannot resolve [dependency]`
-  - Be it DataSource, JdbcTemplate, Log, or any other, just 1. import dependency manually, or 2. Hover error on IntelliJ and choose `Import class...`.
+  - Be it DataSource, JdbcTemplate, Log, or any other dependency, just 1. import dependency manually, or 2. Hover error on IntelliJ and choose `Import class...`.
+- `“FATAL: password authentication failed for user…”`
+  - Make sure you're using same password as in `docker-compose.yml`.

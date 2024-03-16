@@ -4,6 +4,7 @@ import com.ericmadu.springrestapi.dao.impl.BookDaoImpl;
 import com.ericmadu.springrestapi.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,7 +24,7 @@ public class BookDaoImplTests {
     @Test
     public void testThatCreateBookGeneratesCorrectSql() {
         Book book = Book.builder()
-                .isbn("123400001234")
+                .isbn("1111-0000-1111")
                 .title("Memoirs of a noob programmer")
                 .authorId(1L)
                 .build();
@@ -31,7 +32,17 @@ public class BookDaoImplTests {
 
         verify(jdbcTemplate).update(
                 eq("INSERT INTO books (isbn, title, authorId) VALUES (?, ?, ?)"),
-                eq("123400001234"), eq("Memoirs of a noob programmer"), eq(1L)
+                eq("1111-0000-1111"), eq("Memoirs of a noob programmer"), eq(1L)
+        );
+    }
+
+    @Test
+    public void testThatFindOneGeneratesCorrectSql() {
+        underTests.findOne("2222-0000-2222");
+        verify(jdbcTemplate).query(
+                eq("SELECT isbn, title, authorId FROM books WHERE isbn = ? LIMIT 1"),
+                ArgumentMatchers.<BookDaoImpl.BookRowMapper>any(),
+                eq("2222-0000-2222")
         );
     }
 }

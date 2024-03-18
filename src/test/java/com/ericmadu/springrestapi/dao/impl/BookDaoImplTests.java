@@ -1,6 +1,6 @@
 package com.ericmadu.springrestapi.dao.impl;
 
-import com.ericmadu.springrestapi.dao.impl.BookDaoImpl;
+import com.ericmadu.springrestapi.TestDataUtil;
 import com.ericmadu.springrestapi.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,15 +23,12 @@ public class BookDaoImplTests {
 
     @Test
     public void testThatCreateBookGeneratesCorrectSql() {
-        Book book = Book.builder()
-                .isbn("1111-0000-1111")
-                .title("Memoirs of a noob programmer")
-                .authorId(1L)
-                .build();
+        Book book = TestDataUtil.createTestBook();
         underTests.create(book);
 
         verify(jdbcTemplate).update(
-                eq("INSERT INTO books (isbn, title, authorId) VALUES (?, ?, ?)"),
+                // Pay ATTENTION to column name format. Must be the same as in schema and DB (author_id !== authorId).
+                eq("INSERT INTO books (isbn, title, author_id) VALUES (?, ?, ?)"),
                 eq("1111-0000-1111"), eq("Memoirs of a noob programmer"), eq(1L)
         );
     }
@@ -40,7 +37,7 @@ public class BookDaoImplTests {
     public void testThatFindOneGeneratesCorrectSql() {
         underTests.findOne("2222-0000-2222");
         verify(jdbcTemplate).query(
-                eq("SELECT isbn, title, authorId FROM books WHERE isbn = ? LIMIT 1"),
+                eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
                 ArgumentMatchers.<BookDaoImpl.BookRowMapper>any(),
                 eq("2222-0000-2222")
         );

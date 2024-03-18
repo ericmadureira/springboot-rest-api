@@ -1,6 +1,6 @@
 package com.ericmadu.springrestapi.dao.impl;
 
-import com.ericmadu.springrestapi.dao.impl.AuthorDaoImpl;
+import com.ericmadu.springrestapi.TestDataUtil;
 import com.ericmadu.springrestapi.domain.Author;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -26,11 +25,7 @@ public class AuthorDaoImplTests {
 
     @Test
     public void testThatCreateAuthorGeneratesCorrectSql() {
-        Author author = Author.builder()
-                        .id(1L)
-                        .name("Eric Madureira")
-                        .age(32)
-                                .build();
+        Author author = TestDataUtil.createTestAuthor();
         underTests.create(author);
 
         verify(jdbcTemplate).update(

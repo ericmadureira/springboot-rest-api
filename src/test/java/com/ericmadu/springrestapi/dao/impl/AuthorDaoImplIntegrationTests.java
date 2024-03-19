@@ -48,4 +48,16 @@ public class AuthorDaoImplIntegrationTests {
                 .hasSize(3)
                 .containsExactly(authorA, authorB, authorC);
     }
+
+    @Test
+    public void testThatAuthorCanBeUpdated() {
+        Author author = TestDataUtil.createTestAuthorA();
+        underTest.create(author);
+        author.setName("Master Engineer");
+        author.setAge(35);
+        underTest.update(author.getId(), author);
+        Optional<Author> result = underTest.findOne(author.getId());
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(author);
+    }
 }

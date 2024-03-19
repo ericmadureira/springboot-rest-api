@@ -31,7 +31,7 @@ public class BookDaoImplIntegrationTests {
     public void testThatBookCanBeCreatedAndRecalled() {
         Author author = TestDataUtil.createTestAuthorA();
         authorDao.create(author);
-        Book book = TestDataUtil.createTestBook();
+        Book book = TestDataUtil.createTestBookA();
         book.setAuthorId(author.getId());
         underTest.create(book);
         Optional<Book> result = underTest.findOne("1111-0000-1111");

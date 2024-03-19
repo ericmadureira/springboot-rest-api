@@ -28,10 +28,24 @@ public class AuthorDaoImplIntegrationTests {
 
     @Test
     public void testThatAuthorCanBeCreatedAndRecalled() {
-        Author author = TestDataUtil.createTestAuthor();
+        Author author = TestDataUtil.createTestAuthorA();
         underTest.create(author);
         Optional<Author> result = underTest.findOne(author.getId());
         assertThat(result).isPresent();
         assertThat(result.get()).isEqualTo(author);
+    }
+
+    @Test
+    public void testThatMultipleAuthorsCanBeCreatedAndRecalled() {
+        Author authorA = TestDataUtil.createTestAuthorA();
+        underTest.create(authorA);
+        Author authorB = TestDataUtil.createTestAuthorB();
+        underTest.create(authorB);
+        Author authorC = TestDataUtil.createTestAuthorC();
+        underTest.create(authorC);
+        List<Author> result = underTest.find();
+        assertThat(result)
+                .hasSize(3)
+                .containsExactly(authorA, authorB, authorC);
     }
 }

@@ -56,11 +56,11 @@ public class AuthorDaoImplTests {
     @Test
     public void testThatUpdateGeneratesCorrectSql() {
         Author author = TestDataUtil.createTestAuthorA();
-        underTests.update(4L, author);
+        underTests.update(author.getId(), author);
 
         verify(jdbcTemplate).update(
                 "UPDATE authors SET id = ?, name = ?, age = ? WHERE id = ?",
-                1L, "Eric Madureira", 32, 4L
+                1L, "Eric Madureira", 32, 1L
         );
     }
 }

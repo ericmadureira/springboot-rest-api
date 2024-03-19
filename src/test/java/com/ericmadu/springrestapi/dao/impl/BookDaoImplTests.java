@@ -42,4 +42,13 @@ public class BookDaoImplTests {
                 eq("2222-0000-2222")
         );
     }
+
+    @Test
+    public void testThatFindGeneratesCorrectSql() {
+        underTests.find();
+        verify(jdbcTemplate).query(
+                eq("SELECT isbn, title, author_id FROM books"),
+                ArgumentMatchers.<BookDaoImpl.BookRowMapper>any()
+        );
+    }
 }

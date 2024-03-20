@@ -69,4 +69,20 @@ public class AuthorRepositoryIntegrationTests {
         Optional<Author> result = underTest.findById(author.getId());
         assertThat(result).isEmpty();
     }
+
+    @Test
+    public void testThatGetAuthorsWithAgeLessThan() {
+        Author authorA = TestDataUtil.createTestAuthorA();
+        underTest.save(authorA);
+        Author authorB = TestDataUtil.createTestAuthorB();
+        underTest.save(authorB);
+        Author authorC = TestDataUtil.createTestAuthorC();
+        underTest.save(authorC);
+
+        // Spring Data JPA inferred the query from the method name, looking for keywords like 'age' and 'LessThan'.
+        Iterable<Author> result = underTest.ageLessThan(40);
+        assertThat(result)
+                .hasSize(2)
+                .containsExactly(authorA, authorB);
+    }
 }

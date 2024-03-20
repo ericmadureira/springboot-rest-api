@@ -19,21 +19,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 public class BookRepositoryIntegrationTests {
 
-    private AuthorRepository authorRepository;
     private BookRepository underTest;
 
     @Autowired
-    public BookRepositoryIntegrationTests(BookRepository underTest, AuthorRepository authorRepository) {
+    public BookRepositoryIntegrationTests(BookRepository underTest) {
         this.underTest = underTest;
-        this.authorRepository = authorRepository;
     }
 
     @Test
     public void testThatBookCanBeCreatedAndRecalled() {
         Author author = TestDataUtil.createTestAuthorA();
-        authorRepository.save(author);
         Book book = TestDataUtil.createTestBookA(author);
-        book.setAuthor(author);
         underTest.save(book);
         Optional<Book> result = underTest.findById("1111-0000-1111");
         assertThat(result).isPresent();

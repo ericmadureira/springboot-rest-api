@@ -1,7 +1,7 @@
 package com.ericmadu.springrestapi.repositories;
 
 import com.ericmadu.springrestapi.TestDataUtil;
-import com.ericmadu.springrestapi.domain.Author;
+import com.ericmadu.springrestapi.domain.AuthorEntity;
 import com.ericmadu.springrestapi.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +28,7 @@ public class BookRepositoryIntegrationTests {
 
     @Test
     public void testThatBookCanBeCreatedAndRecalled() {
-        Author author = TestDataUtil.createTestAuthorA();
+        AuthorEntity author = TestDataUtil.createTestAuthorA();
         Book book = TestDataUtil.createTestBookA(author);
         underTest.save(book);
         Optional<Book> result = underTest.findById("1111-0000-1111");
@@ -38,7 +38,7 @@ public class BookRepositoryIntegrationTests {
 
     @Test
     public void testThatMultipleBooksCanBeCreatedAndRecalled() {
-        Author author = TestDataUtil.createTestAuthorA();
+        AuthorEntity author = TestDataUtil.createTestAuthorA();
 
         Book bookA = TestDataUtil.createTestBookA(author);
         underTest.save(bookA);
@@ -57,7 +57,7 @@ public class BookRepositoryIntegrationTests {
 
     @Test
     public void testThatBookCanBeUpdated() {
-        Author author = TestDataUtil.createTestAuthorA();
+        AuthorEntity author = TestDataUtil.createTestAuthorA();
         Book book = TestDataUtil.createTestBookA(author);
         underTest.save(book);
 
@@ -71,7 +71,7 @@ public class BookRepositoryIntegrationTests {
 
     @Test
     public void testThatBookCanBeDeleted() {
-        Author author = TestDataUtil.createTestAuthorA();
+        AuthorEntity author = TestDataUtil.createTestAuthorA();
         Book book = TestDataUtil.createTestBookA(author);
         underTest.save(book);
 

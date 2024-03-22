@@ -1,4 +1,4 @@
-package com.ericmadu.springrestapi.domain;
+package com.ericmadu.springrestapi.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

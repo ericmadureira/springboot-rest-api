@@ -1,8 +1,8 @@
 package com.ericmadu.springrestapi.repositories;
 
 import com.ericmadu.springrestapi.TestDataUtil;
-import com.ericmadu.springrestapi.domain.AuthorEntity;
-import com.ericmadu.springrestapi.domain.BookEntity;
+import com.ericmadu.springrestapi.domain.entities.AuthorEntity;
+import com.ericmadu.springrestapi.domain.entities.BookEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

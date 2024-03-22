@@ -1,7 +1,7 @@
 package com.ericmadu.springrestapi;
 
-import com.ericmadu.springrestapi.domain.AuthorEntity;
-import com.ericmadu.springrestapi.domain.BookEntity;
+import com.ericmadu.springrestapi.domain.entities.AuthorEntity;
+import com.ericmadu.springrestapi.domain.entities.BookEntity;
 
 // Utils classes usually have final modifier.
 public final class TestDataUtil {

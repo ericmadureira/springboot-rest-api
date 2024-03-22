@@ -1,6 +1,6 @@
 package com.ericmadu.springrestapi.repositories;
 
-import com.ericmadu.springrestapi.domain.AuthorEntity;
+import com.ericmadu.springrestapi.domain.entities.AuthorEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
